@@ -1,0 +1,122 @@
+body{
+    font-family: "Inter", sans-serif;
+    background-color: #22222217;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(LOGO1.png);
+    margin: 0;
+    padding: 0;
+    background-position: left top;
+    background-size: 100px;
+    background-repeat: no-repeat;
+}
+
+#Quad{
+    width: 696px;
+    height: 551px;
+    background-color: white;
+    border-radius: 52px;
+}
+
+#Quad h1{
+    text-align: center;
+    font-weight: 500;
+    padding-top: 35px;
+    font-size: 30px;
+}
+#Quad h2{
+    font-size: 32px;
+    font-weight: 400;
+    position: absolute;
+    left: 8%;
+}
+#Quad p{
+    position: absolute;
+    left: 50%;
+    top: 89%;
+    transform: translate(-50%, -50%);
+    font-size: 19px;
+}
+p a{
+    color: #409FDF;
+}
+p a:hover{
+    cursor: pointer;
+    transition-duration: 0.4s;
+    color: #D9A03B;
+}
+#QuadCinza{
+    width: 681px;
+    height: 3px;
+    background-color: #22222217;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#QuadCinza2{
+    width: 681px;
+    height: 3px;
+    background-color: #22222217;
+    position: absolute;
+    left: 50%;
+    top: 68%;
+    transform: translate(-50%, -50%);
+}
+#numero1{
+    font-size: 22px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    width: 602px;
+    height: 74px;
+    border-radius: 20px;
+    background-color: #22222217;
+}
+#numero{
+    font-size: 22px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    width: 602px;
+    height: 74px;
+    border-radius: 20px;
+    background-color: #22222217;
+}
+input{
+    border: none;
+}
+input[type=submit]{
+    border: none;
+    font-size: 32px;
+    font-weight: bold;
+    width: 602px;
+    height: 74px;
+    background-color: #409FDF;
+    color: white;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+input[type=submit]:hover{
+    background-color: #D9A03B;
+    color: white;
+
+}
+input::placeholder{
+    color: black;
+}
+#txt1{
+    font-size: 50px;
+}
+img{
+    position: sticky;
+}
