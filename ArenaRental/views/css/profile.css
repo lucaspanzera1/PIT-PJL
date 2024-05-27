@@ -1,0 +1,115 @@
+body{
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #22222217;
+}
+body{
+    font-family: "Inter", sans-serif;
+    background-color: #22222217;
+}
+header{
+    display: grid;
+    grid-template-columns: 1700px 120px;
+    justify-content: right;
+    height: 100px;
+}
+header h2{
+    margin-top: -10px;
+}
+header div img{
+    width: 50px;
+    border-radius: 100%;
+    margin-top: 20px;
+    margin-right: 20px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+header div img:hover{
+    width: 55px;
+    margin-top: 15px;
+}
+#QuadCinza{
+    width: 100%;
+    height: 3px;
+    background-color: #22222217;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+section{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: 230px;
+}
+section h1{
+    font-size: 45px;
+}
+section h2{
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: -30px;
+}
+#fundo{
+    width: 100%;
+    height: 472px;
+    background-image: url(../img/fundo.png);
+    margin-top: -350px;
+    padding-top: 25px;
+    }
+#fundobranco{
+    width: 680px;
+    height: 400px;
+    background-color: white;
+    margin-left: 100px;
+    padding-top: 50px;
+
+}
+#fundobranco label{
+    font-size: 28px;
+    font-weight: 200;
+    margin-left: 5%;
+}
+#fundobranco input[type=text]{
+        font-size: 32px;
+        width: 500px;
+        height: 50px;
+        border: none;
+    }
+#fundobranco input[type=submit]{
+        font-size: 25px;
+        width: 300px;
+        height: 50px;
+        border: none;
+        transition: 0.6s;
+    }
+    #fundobranco input[type=submit]:hover{
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }    
+#fundobranco div{
+    width: 90%;
+    height: 3px;
+    background-color: #22222217;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+nav{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+}
+#ImgPerfil{
+    margin-left: 50%;
+    margin-top: -14%;
+}
+#ImgPerfil img{
+    width: 600px;
+    height: 600px;
+    border-radius: 100%;
+}
+
+
+
