@@ -1,37 +1,30 @@
 <?php
-require ('../../controllers/conexao.php');
+require('../../controllers/conexao.php');
+include('../../models/php/funcao.php');
 
-session_start();
+
+$id_user = SalvaID();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cpf = $_POST["cpf"];
 
-    function deletarImagens($pdo, $email) {
-        $sql_imagens = "DELETE FROM imagem WHERE email_user = :email";
+    function deletarImagens($pdo, $id_user) {
+        $sql_imagens = "DELETE FROM imagem WHERE id_user = :id_user";
         $stmt_imagens = $pdo->prepare($sql_imagens);
-        $stmt_imagens->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt_imagens->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $stmt_imagens->execute();
     }
 
-    function deletarConta($pdo, $cpf) {
-        $sql = "DELETE FROM cadastro WHERE cpf = :cpf";
+    function deletarConta($pdo, $id_user) {
+        $sql = "DELETE FROM cadastro WHERE id = :id_user";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
         return $stmt->execute();
     }
 
-    // Obtém o email do usuário
-    $sql_email = "SELECT email FROM cadastro WHERE cpf = :cpf";
-    $stmt_email = $pdo->prepare($sql_email);
-    $stmt_email->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-    $stmt_email->execute();
-    $result = $stmt_email->fetch(PDO::FETCH_ASSOC);
-    $email = $result['email'];
-
     // Deletar imagens
-    deletarImagens($pdo, $email);
+    deletarImagens($pdo, $id_user);
 
-    if (deletarConta($pdo, $cpf)) {
+    if (deletarConta($pdo, $id_user)) {
         // Removendo informações da sessão
         unset($_SESSION['nome']);
         unset($_SESSION['email']);

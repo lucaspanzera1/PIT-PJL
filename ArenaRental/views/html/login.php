@@ -20,7 +20,7 @@
 
        <form action="../../models/php/login.php" method="post">
         
-       <input type="email" id="numero1"  placeholder="Email" name="email" required>
+       <input type="text" id="cpf"  placeholder="CPF" oninput="mascararCPF()" maxlength="14"  name="cpf"  required>
        <input type="password" id="numero" placeholder="Senha" name="password" required >
 
        <div id="QuadCinza2"></div>
@@ -30,5 +30,7 @@
      </form>
     </div>
 
+
+    <script src="../java/cpf.js"></script>
 </body>
 </html>

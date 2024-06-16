@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/tela1.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="../css/perfil.css?v=<?= time() ?>">
 </head>
 <body>
 
@@ -15,23 +15,34 @@
 
 <header>
 
-<h2><img src="../img/LOGO1.png" width="100px"></h2>
+<h2><a href="conta.php"><img src="../img/LOGO1.png" width="100px"></a></h2>
 <h1>ArenaRental©</h1>
 
+<div id="FotoPerfil">
 <div class="dropdown">
     <button class="mainmenubtn"><?php FotoPerfil() ?></button>
-    <div class="dropdown-child"><a href="conta.php"><button>Conta</button></a></div>
     <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
-  </div>
+  </div></div>
 
 </header>
 
 <div id="QuadCinza"></div>
 
 
+<div id="Corpo">
+
+<div id="Quad">
+<div id="ImgPerfil"></div>
+<h1><?php $nome = SalvaNome(); echo $nome;?></h1>
+<h2><?php $tipo = SalvaTipo(); echo $tipo;?></h2>
+<h3>entrou em <?php $data = SalvaData(); echo $data;?></h3>
+</div>
+
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../java/logoff.js"></script>
-
 
 </body>
 </html>

@@ -1,70 +1,39 @@
 <?php
+// Verificar se houve uma solicitação POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Conexão com o banco de dados
+    require('../../controllers/conexao.php'); // Incluindo o arquivo de conexão
 
-// Conectar ao banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bd_arenauser";
+    session_start();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Receber os dados do formulário
+    $cpf = $_POST["cpf"];
+    $senha = $_POST["password"];
 
+    // Consulta SQL para verificar se o CPF e senha correspondem a um registro na tabela cadastro
+    $sql = "SELECT id, nome, email, tipo, data_registro FROM cadastro WHERE cpf = :cpf AND senha = :senha";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+    $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+    $stmt->execute();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
+    if ($user) {
+        // Salvando as informações do usuário na sessão
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['nome'] = $user['nome'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['tipo'] = $user['tipo'];
+        $_SESSION['data_registro'] = $user['data_registro'];
+
+        echo "<script type=\"text/javascript\">alert(\"Login bem-sucedido!\");</script>";
+
+        // Redirecionando para a tela desejada após o login
+        header("refresh: 1; url=../../views/html/tela1.php");
+        exit();
+    } else {
+        echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/index.php'>
+              <script type=\"text/javascript\">alert(\"CPF ou senha incorretos!\");</script>";
+    }
 }
-//Inicia a sessão, para salvar a variável $nome
-session_start();
-
-
-// Obter os valores do formulário
-$email = $_POST['email'];
-$_SESSION['email'] = $email;
-$password = $_POST['password'];
-
-// Consulta SQL para verificar se o email e a senha estão corretos
-$sql = "SELECT * FROM cadastro WHERE email='$email' AND senha='$password'";
-$result = $conn->query($sql);
-
-
-if ($result->num_rows > 0) {
-
-      // Salva o ID do usuário em uma sessão
-      $email = $_POST['email'];
-      $_SESSION['email'] = $email;
-
-      $row = $result->fetch_assoc();
-
-      $id_usuario = $row['id'];
-      $_SESSION['id_usuario'] = $id_usuario;
-
-  
-      // Salva o nome do usuário em uma sessão
-      $nome = $row['nome'];
-      $_SESSION['nome'] = $nome;
-
-    echo "Login bem-sucedido! Redirecionando...";
-    //Altera de tela após o script rodar
-
-    echo "
-					<script type=\"text/javascript\">
-						alert(\"Usuário válidado!\");
-					</script>
-				";
-
-    header("refresh: 1; url=../../views/html/tela1.php");
-    exit();
-    
-   
-    
-} else {
-    echo "
-					<META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/ArenaRental/index.php'>
-					<script type=\"text/javascript\">
-						alert(\"Email ou senha incorretos!\");
-					</script>
-				";
-}
-
-
-$conn->close();
 ?>
