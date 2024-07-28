@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script type=\"text/javascript\">alert(\"Login bem-sucedido!\");</script>";
 
         // Redirecionando para a tela desejada após o login
-        header("refresh: 1; url=../../views/html/tela1.php");
+        header("refresh: 1; url=http://localhost/ArenaRental/index.php");
         exit();
     } else {
         echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/index.php'>

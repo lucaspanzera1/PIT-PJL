@@ -1,9 +1,9 @@
 const inputFile = document.querySelector("#picture__input");
 const pictureImage = document.querySelector(".picture__image");
-const pictureImageTxt = "Foto";
+const pictureImageTxt = "aaaa";
 
 // Caminho inicial da imagem usando a variável nomeImagem definida pelo PHP
-const caminhoInicial = `../../views/img/`;
+const caminhoInicial = `../../models/php/foto/${nomeImagem}`;
 
 // Função para carregar a imagem ao iniciar a página
 function carregarImagemInicial() {
@@ -42,4 +42,3 @@ inputFile.addEventListener("change", function (e) {
     pictureImage.innerHTML = pictureImageTxt;
   }
 });
-

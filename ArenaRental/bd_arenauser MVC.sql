@@ -18,9 +18,30 @@ use bd_arenauser;
         id_user INT NOT NULL,
         FOREIGN KEY (id_user) REFERENCES cadastro(id)
     );
+    
+    CREATE TABLE quadra (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_quadra VARCHAR(255) NOT NULL,
+    esporte VARCHAR(255) NOT NULL,
+    localizacao VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    valor DECIMAL(10, 2) NOT NULL,
+    id_user INT NOT NULL,
+    nome_dono VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_user) REFERENCES cadastro(id),
+    FOREIGN KEY (nome_dono) REFERENCES cadastro(nome)
+);
+
+   CREATE TABLE imagem_quadra (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome_imagem VARCHAR(220) NOT NULL,
+        id_dono INT NOT NULL,
+        FOREIGN KEY (id_dono) REFERENCES quadra(id)
+    );
 
 SELECT * FROM cadastro;	
+SELECT * FROM quadra;	
 SELECT * FROM imagem;
-
+SELECT * FROM imagem_quadra;
 
 

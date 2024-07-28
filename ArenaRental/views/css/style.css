@@ -20,7 +20,7 @@ header h2{
     margin-left: 3%;
 }
 
-.mainmenubtn {
+button .mainmenubtn {
     border: none;
     width: 60px;
     height: 60px;
@@ -62,4 +62,5 @@ header h2{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 

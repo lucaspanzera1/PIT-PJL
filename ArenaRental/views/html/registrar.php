@@ -11,6 +11,16 @@
 </head>
 <body>
 
+<header>
+<a href="../../index.php"><h2 id="imgH2"></h2></a>
+<h1>ArenaRental©</h1>
+<div id="FotoPerfil">
+<div class="dropdown">
+<button class="mainmenubtn"></button>
+<div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
+</div></div>
+</header>
+
     <div id="Quad"> 
        <h1>Registrar-se como:</h1>
 
@@ -27,5 +37,9 @@
         <div>Já tem cadasto? <a href="login.php">Login.</a></div>
        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../java/cpf.js"></script>
+    <script src="../java/dark.js"></script>
 </body>
 </html>

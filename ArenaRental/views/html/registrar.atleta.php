@@ -40,7 +40,10 @@
 
 
 </div>
+<div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../java/dark.js"></script>
 <script src="../java/nome.js" ></script>
 <script src="../java/cpf.js"></script>
 </body>

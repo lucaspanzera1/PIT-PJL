@@ -6,12 +6,20 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
+body.dark-mode {
+  background-size: 100%;
+  background-color: #262626;
+  color: white;
+}
 #Quad{
     width: 696px;
     height: 551px;
     background-color: white;
     border-radius: 52px;
+}
+body.dark-mode #Quad{
+  background-color:  #262626;
+  border: solid 1px white;
 }
 
 #Quad h1{
@@ -32,6 +40,9 @@ body{
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+body.dark-mode #QuadCinza{
+  background-color: white;
 }
 header{
     padding-top: 15px;
@@ -100,6 +111,10 @@ input[type=submit]{
     cursor: pointer;
     transition-duration: 0.4s;
 }
+body.dark-mode input[type=submit]{
+  background-color: rgba(255, 255, 255, 0.144);
+  color: white;
+}
 input[type=submit]:hover{
     background-color: black;
     color: white;
@@ -109,4 +124,11 @@ input::placeholder{
 }
 #txt1{
     font-size: 50px;
+}
+.picture img{
+    width: 180px;
+    height: 180px;
+  }
+  .dropdown-child{
+    display: none;
 }

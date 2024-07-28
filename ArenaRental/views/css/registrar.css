@@ -1,17 +1,33 @@
 body{
     font-family: "Inter", sans-serif;
-    background-color: #22222217;
+    background-image: url(../img/fundo2.png);
+    background-size: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: background-image 0.3s ease, color 0.3s ease;
 }
-
+body.dark-mode {
+    background-size: 100%;
+    background-image: url(../img/fundo2dark.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #262626;
+    color: white;
+}
 #Quad{
     width: 696px;
     height: 859px;
     background-color: white;
     border-radius: 52px;
+    transition: background-image 0.3s ease, color 0.3s ease;
+}
+body.dark-mode #Quad{
+    background-color: #262626;
+    border: 1px solid white;
 }
 #Quad h1{
     text-align: center;
@@ -27,8 +43,15 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+body.dark-mode #QuadCinza{
+    background-color: white;
+}
 input{
     border: 1px solid rgba(0, 0, 0, 0.473);
+    
+}
+body.dark-mode input{
+    border: 1px solid white  
 }
 #cpf{
     font-size: 22px;
@@ -40,6 +63,10 @@ input{
     height: 74px;
     border-radius: 5px;
     background-color: white;
+}
+body.dark-mode #cpf{
+    background-color: rgba(255, 255, 255, 0.144);
+    color: white;
 }
 #txt1{
     position: absolute;
@@ -58,6 +85,10 @@ input{
     border-radius: 5px;
     background-color: white;
 }
+body.dark-mode #nome{
+    background-color: rgba(255, 255, 255, 0.144);
+    color: white;
+}
 #sobrenome{
     font-size: 22px;
     position: absolute;
@@ -68,6 +99,10 @@ input{
     height: 74px;
     border-radius: 5px;
     background-color: white;
+}
+body.dark-mode #sobrenome{
+    background-color: rgba(255, 255, 255, 0.144);
+    color: white;
 }
 #txt2{
     position: absolute;
@@ -86,13 +121,17 @@ input{
     border-radius: 5px;
     background-color: white;
 }
+body.dark-mode #email{
+    background-color: rgba(255, 255, 255, 0.144);
+    color: white;
+}
 #txt3{
     position: absolute;
     left: 33%;
     top: 72%;
     transform: translate(-50%, -50%);
 }
-button{
+#Quad button{
     border: none;
     font-size: 32px;
     font-weight: bold;
@@ -107,8 +146,12 @@ button{
     cursor: pointer;
     transition-duration: 0.4s;
 }
-button:hover{
+#Quad button:hover{
     background-color: black;
+    color: white;
+}
+body.dark-mode #Quad button{
+    background-color: rgba(255, 255, 255, 0.144);
     color: white;
 }
 #txt4{
@@ -127,4 +170,9 @@ a{
 input::placeholder{
         color: black;
 }
-    
+body.dark-mode input::placeholder {
+    color: white;
+  }
+.dropdown-child{
+    display: none;
+}

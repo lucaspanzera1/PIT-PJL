@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "
             <script type=\"text/javascript\">
                 alert(\"Registrado com sucesso!.\");
-                window.location.href = 'http://localhost/ArenaRental/views/html/page1.php';
+                window.location.href = 'http://localhost/ArenaRental/views/html/page2.php';
             </script>
         ";
         exit();

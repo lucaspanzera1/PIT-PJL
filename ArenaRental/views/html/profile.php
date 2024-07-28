@@ -15,9 +15,15 @@
 
 
 <header>
-<h2><a href="conta.php"><img src="../img/LOGO1.png" width="100px"></a></h2>
-<div>
-</div>
+<a href="conta.php"><h2 id="imgH2"></h2></a>
+<h1>ArenaRental©</h1>
+<div id="FotoPerfil">
+<div class="dropdown">
+    <button class="mainmenubtn"></button>
+    <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
+    <div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
+  </div></div>
+
 </header>
 
 <div id="QuadCinza"></div>
@@ -28,17 +34,37 @@
     $nome = SalvaNome();
     echo $nome;
     ;?>!</h1>
-    <h2>Edite seu perfil aqui!</h2>
+    <h2>Edite seu perfil aqui.</h2>
 </section>
 
-<div id="QuadCinza"></div>
+<div id="QuadCinza2"></div>
 
-<div id="ImgPerfil"><?php FotoPerfil() ?></div>
+<div id="ImgPerfil">
+<form method="POST" action="../../models/php/proc_upload.php" enctype="multipart/form-data">
+
+<label class="picture" for="picture__input" tabIndex="0">
+    <span class="picture__image"></span>
+  </label>
+  
+  <input name="arquivo" type="file" name="picture__input" id="picture__input">
+
+  <input type="submit" id="Continuar" value="Alterar foto">
+
+    </div>
+    </form>
+
+
+    <?php $nome_imagem = Foto() ?>
+    <script>
+        var nomeImagem = "<?php echo $nome_imagem; ?>";
+    </script>
+  <script src="../java/foto.js"></script>
+   </form>
+</div>
 
 
 <div id="fundo"> 
     <div id="fundobranco">
-  
         <?php
             require('../../controllers/conexao.php');
             require_once '../../models/php/funcao.php'; // Use require_once em vez de include_once para garantir que o arquivo seja incluído apenas uma vez
@@ -74,13 +100,11 @@
             }
         }
         ?>
-
-        <script src="../java/cpf.js"></script>
-        <script src="../java/script1.js"></script>
     </div>
-
-
-    
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../java/logoff.js"></script>
+<script src="../java/dark.js"></script>
 </body>
 </html>

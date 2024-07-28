@@ -2,14 +2,13 @@
 
 session_start();
 
-
-function SalvaEmail(){
-    if(isset($_SESSION['email'])) {
-       return $_SESSION['email'];
-    } else {
-        echo "Email do usuário não encontrado.";
+    function SalvaEmail(){
+        if(isset($_SESSION['email'])) {
+        return $_SESSION['email'];
+        } else {
+            echo "Email do usuário não encontrado.";
+        }
     }
-}
 
 function SalvaNome(){
     if(isset($_SESSION['nome'])) {
@@ -45,7 +44,46 @@ function SalvaData() {
     }
 }
 
+function FotoPerfil1($conn){
+    $id_user = SalvaID();
+        
+    // Consulta as imagens do usuário
+    $query = mysqli_query($conn, "SELECT * FROM imagem WHERE id_user = '$id_user'");
+    if($query) {
+        if(mysqli_num_rows($query) > 0) {
+            while($row = mysqli_fetch_assoc($query)) {
+                $nome_imagem = $row['nome_imagem'];
+                echo "<img src='../../models/php/foto/$nome_imagem' alt='Imagem do Usuário'>";
+                return $nome_imagem;
+            }
+        } else {
+            echo "Usuário não está logado.";
+        }
+    } else {
+        echo "Erro na consulta ao banco de dados.";
+    }
+}
 
+function FotoPerfil2(){
+    include_once("controllers/conexaoimg.php");
+        
+    $id_user = SalvaID();
+    // Consulta as imagens do usuário
+    $query = mysqli_query($conn, "SELECT * FROM imagem WHERE id_user = '$id_user'");
+    if($query) {
+        if(mysqli_num_rows($query) > 0) {
+            while($row = mysqli_fetch_assoc($query)) {
+                $nome_imagem = $row['nome_imagem'];
+                echo "<img src='models/php/foto/$nome_imagem' alt='Imagem do Usuário'>";
+                return $nome_imagem;
+            }
+        } else {
+            echo "Usuário não está logado.";
+        }
+    } else {
+        echo "Erro na consulta ao banco de dados.";
+    }
+}
 
 
 function FotoPerfil(){
@@ -70,6 +108,48 @@ function FotoPerfil(){
     }
 }
 
+function FotoQuadra($conn){
+    $id_usuario = SalvaID();
+
+    // Consulta as imagens da quadra do usuário
+    $query = mysqli_query($conn, "SELECT * FROM imagem_quadra WHERE id_dono = '$id_usuario'");
+    if($query) {
+        if(mysqli_num_rows($query) > 0) {
+            while($row = mysqli_fetch_assoc($query)) {
+                $nome_imagem = $row['nome_imagem'];
+                echo "<img src='../../models/php/foto/$nome_imagem' alt='Imagem da Quadra'>";
+                return $nome_imagem;
+            }
+        } else {
+            echo "Nenhuma quadra registrada.";
+        }
+    } else {
+        echo "Erro na consulta ao banco de dados.";
+    }
+}
+
+function Foto(){
+    include_once("../../controllers/conexaoimg.php");
+
+    $id_user = SalvaID();
+        
+    // Consulta as imagens do usuário
+    $query = mysqli_query($conn, "SELECT * FROM imagem WHERE id_user = '$id_user'");
+    if($query) {
+        if(mysqli_num_rows($query) > 0) {
+            while($row = mysqli_fetch_assoc($query)) {
+                $nome_imagem = $row['nome_imagem'];
+                return $nome_imagem;
+            }
+        } else {
+            echo "Usuário não está logado.";
+        }
+    } else {
+        echo "Erro na consulta ao banco de dados.";
+    }
+}
+
+
 
 function buscarRegistro($pdo, $id) {
     require('../../controllers/conexao.php');
@@ -82,6 +162,17 @@ function buscarRegistro($pdo, $id) {
     return $registro;
 
 }
+function buscarQuadra($pdo, $id_user) {
+    require('../../controllers/conexao.php');
+
+    $sql = "SELECT * FROM quadra WHERE id_user=:id_user";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id_user' => $id_user]);
+    $quadra = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $quadra;
+}
+
 
 
 function mascaraCPF($cpf){

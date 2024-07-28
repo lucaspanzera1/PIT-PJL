@@ -19,11 +19,10 @@
 <h1>ArenaRental©</h1>
 
 <div class="dropdown">
-    <button class="mainmenubtn"><?php FotoPerfil() ?></button>
+  <button class="mainmenubtn"><div id="ImgPerfil"><?php FotoPerfil() ?></div></button>
     <div class="dropdown-child"><a href="conta.php"><button>Conta</button></a></div>
     <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
   </div>
-
 </header>
 
 <div id="QuadCinza"></div>

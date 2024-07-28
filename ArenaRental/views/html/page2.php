@@ -36,7 +36,7 @@ if(isset($_SESSION['id_usuario'])) {
     }
 ?>
 
-    <form method="POST" action="../../models/php/proc_upload.php" enctype="multipart/form-data">
+    <form method="POST" action="../../models/php/proc_upload2.php" enctype="multipart/form-data">
 
     <label class="picture" for="picture__input" tabIndex="0">
         <span class="picture__image"></span>

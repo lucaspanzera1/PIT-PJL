@@ -45,7 +45,7 @@ else if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
         $query_delete = mysqli_query($conn, "DELETE FROM imagem WHERE id_user = '$id_user'");
         $query = mysqli_query($conn, "INSERT INTO imagem (nome_imagem, id_user) VALUES ('$nome_final', '$id_user')");
         echo "
-            <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/views/html/tela1.php'>
+            <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/views/html/registra.quadra1.php'>
             <script type=\"text/javascript\">
                 alert(\"Imagem cadastrada com Sucesso.\");
             </script>

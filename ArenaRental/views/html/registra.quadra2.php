@@ -7,25 +7,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/page1.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="../css/registra.quadra2.css?v=<?= time() ?>">
 </head>
 <body>
 
-    <div id="Quad"> 
-       <h1>Quase lá!</h1>
+<?php include '../../models/php/funcao.php'; ?>
 
-       <div id="QuadCinza"></div>
-       
-       <header>
-       <h2>Bem-vindo a ArenaRental!</h2>
-       <h2>Primeiro, adicione uma foto no seu perfil!</h2>
-       </header>
+<header>
 
-       <?php
-session_start();
+<h2><a href="tela1.php"><img src="../img/LOGO1.png" width="100px"></a></h2>
+<h1>ArenaRental©</h1>
 
+<div id="FotoPerfil">
+<div class="dropdown">
+    <button class="mainmenubtn"><?php FotoPerfil() ?></button>
+    <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
+  </div></div>
 
-if(isset($_SESSION['nome'])) {
+</header>
+
+<div id="QuadCinza"></div>
+ 
+ 
+ <?php if(isset($_SESSION['nome'])) {
     $nome = $_SESSION['nome'];
 } else {
     $nome = "usuário";
@@ -36,7 +40,7 @@ if(isset($_SESSION['id_usuario'])) {
     }
 ?>
 
-    <form method="POST" action="../../models/php/proc_upload.php" enctype="multipart/form-data">
+    <form method="POST" action="../../models/php/upload.quadra.php" enctype="multipart/form-data">
 
     <label class="picture" for="picture__input" tabIndex="0">
         <span class="picture__image"></span>
@@ -54,22 +58,6 @@ if(isset($_SESSION['id_usuario'])) {
         const inputFile = document.querySelector("#picture__input");
 const pictureImage = document.querySelector(".picture__image");
 const pictureImageTxt = "Foto";
-
-// Caminho inicial da imagem usando a variável nomeImagem definida pelo PHP
-const caminhoInicial = `../../views/img/bola.png`;
-
-// Função para carregar a imagem ao iniciar a página
-function carregarImagemInicial() {
-  const img = document.createElement("img");
-  img.src = caminhoInicial;
-  img.classList.add("picture__img");
-
-  pictureImage.innerHTML = "";
-  pictureImage.appendChild(img);
-}
-
-// Chama a função para carregar a imagem ao iniciar a página
-carregarImagemInicial();
 
 inputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
@@ -95,19 +83,9 @@ inputFile.addEventListener("change", function (e) {
     pictureImage.innerHTML = pictureImageTxt;
   }
 });
-
-
       </script>
        </form>
 
-     
-       
-    </div>
-    <div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="../java/dark.js"></script>
-<script src="../java/nome.js" ></script>
-<script src="../java/cpf.js"></script>
 </body>
 </html>
