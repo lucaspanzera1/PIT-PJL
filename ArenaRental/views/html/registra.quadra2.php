@@ -14,22 +14,25 @@
 <?php include '../../models/php/funcao.php'; ?>
 
 <header>
-
-<h2><a href="tela1.php"><img src="../img/LOGO1.png" width="100px"></a></h2>
+<a href="../../index.php"><h2 id="imgH2"></h2></a>
 <h1>ArenaRental©</h1>
-
 <div id="FotoPerfil">
 <div class="dropdown">
-    <button class="mainmenubtn"><?php FotoPerfil() ?></button>
+    <button class="mainmenubtn"><div id="ImgPerfil"><?php FotoPerfil() ?></div></button>
     <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
+    <div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
   </div></div>
 
 </header>
 
 <div id="QuadCinza"></div>
- 
- 
- <?php if(isset($_SESSION['nome'])) {
+
+<section>
+  <div>
+<h1>Adicione algumas fotos do seu espaço.</h1>
+<h2>Você deve ter pelo menos 1 foto para publicar seu anúncio. Você pode adicionar ou alterar mais tarde.</h2>
+
+<?php if(isset($_SESSION['nome'])) {
     $nome = $_SESSION['nome'];
 } else {
     $nome = "usuário";
@@ -48,7 +51,7 @@ if(isset($_SESSION['id_usuario'])) {
       
       <input name="arquivo" type="file" name="picture__input" id="picture__input">
 
-      <input type="submit" id="Continuar" value="Enviar">
+      <button type="submit" id="Continuar">Continuar</button>
 
         </div>
         </form>
@@ -86,6 +89,8 @@ inputFile.addEventListener("change", function (e) {
       </script>
        </form>
 
-
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../../java/logoff.js"></script>
+<script src="../java/dark.js"></script>
 </body>
 </html>

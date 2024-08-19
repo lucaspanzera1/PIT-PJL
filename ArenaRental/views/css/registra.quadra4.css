@@ -133,101 +133,64 @@ button:hover{
 body.dark-mode #Valor{
     color: white;
 }
-section{
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; 
+section{ 
+    position: absolute;
+    top: 55%;
+    right: 0%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 675px;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    transition: 0.6s;
+
+}
+body.dark-mode section{
+    background-color: #424141;
+}
+section img{
+    width: 450px;
+    height: 450px;
+    border-radius: 15px;
+}
+section:hover{
+    cursor: pointer;
 }
 section h1{
-    font-size: 40px;
+    font-size: 45px;
+    margin-bottom: -20px;
+   
 }
 section h2{
-    margin-top: -30px;
     font-size: 32px;
     font-weight: 300;
-    width: 774px;
 }
-#picture__input {
-    display: none;
-  }
-  
-  .picture {
+section h3{
+    font-size: 32px;
+    font-weight: 300;
+    margin-top: -20px;
+}
+form{
+    padding-left: 7%;
+}
+form{
+    text-align: justify;
+    padding-top: 55px;
+}
+form h1{
     width: 750px;
-    height: 600px;
-    background: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    cursor: pointer;
-    font-family: sans-serif;
-    transition: color 300ms ease-in-out, background 300ms ease-in-out;
-    transition: 0.6s;
-    outline: none;
-    overflow: hidden;
-    border-radius: 15px;
-  }
-  .picture:active {
-    color: turquoise;
-    background: #eee;
-  }
-  
-  .picture:focus {
-    color: #777;
-    background: #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .picture__img {
-    max-width: 100%;
-  }
-
-#txt1{
-    font-size: 50px;
 }
-.picture img{
+form h2{
+    font-weight: 300;
     width: 750px;
-    height: 600px;
-  }
-input[type="file"] {
-    display: none;
 }
-.image-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Espaçamento entre os inputs */
+form label{
+    font-size: 25px;
 }
-#imageUpload_1 {
-    width: 750px;
-    height: 600px;
+select{
+    font-size: 26px;
+    margin-bottom: 15px;
 }
-
-#imageUpload_2 {
-    width: 351px;
-    height: 300px;
-    border-top-left-radius: 10px;
-}
-
-#imageUpload_3 {
-    width: 351px;
-    height: 300px;
-    border-bottom-left-radius: 10px;
-}
-
-#imageUpload_4 {
-    width: 351px;
-    height: 300px;
-    border-top-right-radius: 10px;
-}
-
-#imageUpload_5 {
-    width: 351px;
-    height: 300px;
-    border-bottom-right-radius: 10px;
-}
-#Continuar{
-    position: absolute;
-    top: 90%;
-    left: 83%;
-}
-

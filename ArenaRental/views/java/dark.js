@@ -5,7 +5,7 @@ $(document).ready(function(){
 
         // Adiciona um pequeno delay para que a mensagem "Desconectando..." seja visível antes do redirecionamento
         setTimeout(function(){
-            window.location.href = "http://localhost/ArenaRental/model/User/logoff.php";
+            window.location.href = "../../../models/php/logoff.php";;
         }, 500); // 500 milissegundos de delay
     });
 });

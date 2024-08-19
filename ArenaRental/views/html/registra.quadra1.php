@@ -22,7 +22,6 @@
     <div class="dropdown-child"><button class="logoff-btn">Logoff</button></div>
     <div class="dropdown-child"><button id="toggle-theme">Alterar tema</button></div>
   </div></div>
-
 </header>
 
 <div id="QuadCinza"></div>
@@ -30,16 +29,11 @@
 <section>
     <div>
     <h2>Etapa 1</h2>
-    <h1> Informações sua quadra</h1>
+    <h1> Descreva sua quadra</h1>
 
     <form action="../../models/php/insere_quadra.php" method="post">
-    <input type="text" id="Nome" name="nome_quadra" placeholder="Nome da quadra"></br>
-    <input type="text" id="Esporte" name="esporte" placeholder="Esporte principal"></br>
-    <input type="text" id="Localizacao" name="localizacao" placeholder="Localização"></br>
     <input id="Desc" name="descricao" type="text" placeholder="Descrição"></br>
-    <div id="De">Determine o preço por hora.</div>
-    <div id="RS">R$<input id="Valor" name="valor" type="text" value="99"></div>
-    <button type="submit">Cadastrar Quadra</button>
+    <button type="submit" id="Continuar ">Continuar</button>
 </form>
 
     </div>

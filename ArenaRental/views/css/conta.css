@@ -41,7 +41,7 @@ header h2{
     color: #0000FF;
     transition: color 0.3s ease;
 }
-div.dark-mode h1{
+body.dark-mode div h1{
     font-size: 45px;
     color: white;
 }
@@ -165,7 +165,9 @@ a{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#QuadCinza.dark-mode{
+body.dark-mode #imgH2{
+    background-image: url(../img/LOGO2.png);
+}#QuadCinza{
     background-color: white;
 }
 a{
@@ -185,7 +187,6 @@ a{
     transition: background-image 0.3s ease, color 0.3s ease;
 
 }
-#imgH2.dark-mode{
+body.dark-mode #imgH2{
     background-image: url(../img/LOGO2.png);
 }
-

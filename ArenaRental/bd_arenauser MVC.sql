@@ -28,6 +28,8 @@ use bd_arenauser;
     valor DECIMAL(10, 2) NOT NULL,
     id_user INT NOT NULL,
     nome_dono VARCHAR(255) NOT NULL,
+    horario_abre VARCHAR(5) NOT NULL,
+    horario_fecha VARCHAR(5) NOT NULL,
     FOREIGN KEY (id_user) REFERENCES cadastro(id),
     FOREIGN KEY (nome_dono) REFERENCES cadastro(nome)
 );
@@ -43,5 +45,5 @@ SELECT * FROM cadastro;
 SELECT * FROM quadra;	
 SELECT * FROM imagem;
 SELECT * FROM imagem_quadra;
-
+SELECT * FROM intervalos_1;
 

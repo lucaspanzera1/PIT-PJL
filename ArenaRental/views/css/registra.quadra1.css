@@ -89,13 +89,15 @@ section h2{
     transition: 0.6s;
     background-color: transparent;
 }
+.mainmenubtn:hover{
+    background-color: transparent;
+}
 .dropdown{
     position: relative;
     display: inline-block;
 }
 .dropdown-child{
     display: none;
-    background-color: #22222217;
     transition: 0.6s;
     
 }
@@ -128,7 +130,9 @@ input{
     margin-bottom: 20px;
 }
 #Desc{
-    height: 148px;
+    height: 400px;
+    background-color: transparent;
+    border-radius: 45px;
 }
 #De{
     font-size: 20px;
@@ -141,6 +145,23 @@ input{
     transition: background-image 0.3s ease, color 0.3s ease;
     
 
+}
+button{
+    width: 300px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    color: black;
+    transition: 0.6s;
+    border-style: none;
+    border: 1px solid black;
+}
+button:hover{
+    background-color: black;
+    color: white;
 }
 body.dark-mode #Valor{
     color: white;

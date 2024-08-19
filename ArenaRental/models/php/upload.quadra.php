@@ -41,14 +41,14 @@ else if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
         
         if ($query) {
             echo "
-                <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/index.php'>
+                <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/views/html/registra.quadra3.php'>
                 <script type=\"text/javascript\">
                     alert(\"Imagem cadastrada com Sucesso.\");
                 </script>
             ";
         } else {
             echo "
-                <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/index.php'>
+                <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/views/html/registra.quadra2.php'>
                 <script type=\"text/javascript\">
                     alert(\"Erro ao cadastrar imagem no banco de dados.\");
                 </script>
@@ -57,7 +57,7 @@ else if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
     } else {
         // Upload não efetuado com sucesso, exibe a mensagem
         echo "
-            <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/index.php'>
+            <META HTTP-EQUIV=REFRESH CONTENT='0;URL=http://localhost/ArenaRental/views/html/registra.quadra2.php'>
             <script type=\"text/javascript\">
                 alert(\"Imagem não foi cadastrada com Sucesso.\");
             </script>
