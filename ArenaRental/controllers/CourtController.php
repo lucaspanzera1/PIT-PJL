@@ -1,0 +1,3 @@
+<?php
+// Court related actions
+?>

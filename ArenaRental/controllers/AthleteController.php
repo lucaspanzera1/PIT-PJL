@@ -1,0 +1,3 @@
+<?php
+// Athlete related actions
+?>
