@@ -1,3 +1,0 @@
-<?php
-// User related actions
-?>
