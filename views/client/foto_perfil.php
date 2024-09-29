@@ -23,6 +23,7 @@
       <h2>Primeiro, adicione uma foto no seu perfil!</h2>
       </nav>
       <form method="POST" action="../../controllers/ClientController.php?action=FotoPerfil" enctype="multipart/form-data">
+      
     <label class="picture" for="picture__input" tabIndex="0">
         <span class="picture__image"></span>
     </label>

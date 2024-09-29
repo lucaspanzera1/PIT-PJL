@@ -14,7 +14,7 @@ class Conexao
         if (!isset(self::$instance)) {
             try {
                 self::$instance = new PDO(
-                    "mysql:host=localhost;dbname=bd_arenauser",
+                    "mysql:host=localhost;dbname=arenarental",
                     "root",
                     "",
                     array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8')

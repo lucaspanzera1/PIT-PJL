@@ -11,7 +11,7 @@ if (isset($_SESSION['client']['id'])) {
         $_SESSION['client']['nome'],
         $_SESSION['client']['email'],
         $_SESSION['client']['tipo'],
-        $_SESSION['client']['data_registro']
+        $_SESSION['client']['data_registro'],
     );
     
     // Verifique se o campo 'data_registro' existe na sessão
@@ -35,8 +35,5 @@ if (isset($_SESSION['client']['id'])) {
     exit(); // Pare a execução do script para garantir que o redirecionamento aconteça
 }
 
-$owner = new Owner();
-$userId = $_SESSION['client']['id'];
-$quadras = $owner->getQuadraInfo($userId);
 
 ?>

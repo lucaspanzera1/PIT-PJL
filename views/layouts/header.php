@@ -3,8 +3,7 @@ require_once '../../models/Owner.php';
 require_once '../../models/Client.php';
 require_once '../../models/User.php';
 
-session_start(); // Certifique-se de iniciar a sessão se ainda não foi feito
-
+session_start(); // Iniciar sessão
 
 // Verifique se há dados de cliente na sessão
 if (isset($_SESSION['client'])) {
@@ -14,13 +13,17 @@ if (isset($_SESSION['client'])) {
         $_SESSION['client']['nome'],
         $_SESSION['client']['email'],
         $_SESSION['client']['tipo'],
-        $_SESSION['client']['data_registro'],
-
+        $_SESSION['client']['data_registro']
     );
-    if (isset($_SESSION['client'])) {
-        $dataRegistro = $_SESSION['client']['data_registro'];
-        // Converte e formata a data para o formato brasileiro
-        $dataFormatoBrasileiro = date('d/m/Y', strtotime($dataRegistro));
+
+    // Formatar a data de registro
+    $dataRegistro = $_SESSION['client']['data_registro'];
+    $dataFormatoBrasileiro = date('d/m/Y', strtotime($dataRegistro));
+
+    // Verifique se o cliente é do tipo "Dono"
+    if ($client->getType() === 'Dono') {
+        // Carregue as informações do proprietário usando o ID do cliente
+        $owner = Owner::getOwnerById($client->getId());
     }
     // Verifique se o botão de logoff foi pressionado
     if (isset($_POST['logoff'])) {
@@ -37,15 +40,20 @@ if (isset($_SESSION['client'])) {
 <header>
     <div>
         <h2 id="imgH2"></h2>
-        <h1>ArenaRental©</h1>
+        <h1><a href="../home/index.php">ArenaRental©</a></h1>
     </div>
 
     <?php if (isset($_SESSION['client'])): ?>
-    <div class="dropdown">
-        <div id="ImgPerfil" class="mainmenubtn"><?php $profilePicture = $client->getProfilePicture(); ?></div>
+        <div class="dropdown">
+    <div id="ImgPerfil" class="mainmenubtn">
+        <img src="<?php echo htmlspecialchars($client->getProfilePicture()); ?>" alt="AAAA">
+    </div>
         <div class="dropdown-child">
-            <button id="Name"> <?php echo "" . htmlspecialchars($client->getFirstName()); ?></button>
+            <button id="Name"> <?php echo "" . htmlspecialchars($client->getName()); ?></button>
             <a href="../client/conta.php"><button>Conta</button></a>
+            <?php if ($client->getType() === 'cliente'): ?>
+                <a href="../client/form.owner1.php"><button>Anuncie!</button></a>
+                <?php endif; ?>
             <form method="POST">
                 <button type="submit" name="logoff" class="logoff-btn">Logoff</button>
             </form>
@@ -59,13 +67,8 @@ if (isset($_SESSION['client'])) {
         <button class="mainmenubtn"></button>
         <div class="dropdown-child">
             <a href="../auth/login.php"><button>Login</button></a>
-            <div class="dropdown1">
-                <button class="dropbtn">Registrar</button>
-                <div class="dropdown-content">
-                    <a href="../auth/registrar.php?tipo=Atleta">Atleta</a>
-                    <a href="../auth/registrar.php?tipo=Dono">Dono</a>
-                </div>
-            </div>
+            <a href="../auth/registrar.php"><button>Registrar</button></a>
+            <a href="../auth/registrar.php"><button>Anuncie!</button></a>
             <button id="toggle-theme">Tema</button>
         </div>
     </div>

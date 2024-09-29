@@ -2,167 +2,248 @@
 require_once 'Client.php';
 require_once 'Conexao.php';
 
-class Owner extends Client
-{
-    private $conn;
+class Owner extends Client {
+    private $id;
+    private $nomeEspaco;
+    private $localizacao;
+    private $cep;
+    private $descricao;
+    private $recursos;
 
-    public function __construct()
-    {
-        $this->conn = Conexao::getInstance();
+    public function __construct($id, $name, $email, $type, $registrationDate, $nomeEspaco, $localizacao, $cep, $descricao, $recursos) {
+        parent::__construct($id, $name, $email, $type, $registrationDate);
+        $this->id = $id;
+        $this->nomeEspaco = $nomeEspaco;
+        $this->localizacao = $localizacao;
+        $this->cep = $cep;
+        $this->descricao = $descricao;
+        $this->recursos = $recursos;
+    }
+    // Getters para acessar os atributos
+    public function getNomeEspaco() {
+        return $this->nomeEspaco;
     }
 
-    public function getQuadraInfo($userId)
-{
-    $sql = "SELECT id, nome_quadra, esporte, localizacao, descricao, valor, id_user, nome_dono, horario_abre, horario_fecha 
-            FROM quadra 
-            WHERE id_user = :userId";
-    
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmt->execute();
-    
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+    public function getLocalizacao() {
+        return $this->localizacao;
+    }
 
-public function getQuadraFoto()
-{
-    $pdo = Conexao::getInstance();
-    $stmt = $pdo->prepare("SELECT imagem_quadra FROM imagem WHERE id_dono = :id_user");
-    $stmt->bindParam(':id_user', $this->id, PDO::PARAM_INT);
-    $stmt->execute();
+    public function getCep() {
+        return $this->cep;
+    }
 
-    if ($stmt->rowCount() > 0) {
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $nome_imagem = $result['nome_imagem'];
-        echo "<img src='../../upload/quadra_img/$nome_imagem' alt='Imagem de perfil'>";
-        return $nome_imagem;
-    } else {
-        echo "<img src='../../upload/user_pfp/userpfp.png' alt='Imagem Padrão'>";
+    public function getDescricao() {
+        return $this->descricao;
+    }
+
+    public function getRecursos() { // Novo getter para 'recursos'
+        return $this->recursos;
+    }
+    public static function getOwnerById($ownerId) {
+        $pdo = Conexao::getInstance();
+    
+        // Consulta que faz JOIN entre cliente e proprietario
+        $stmt = $pdo->prepare("
+            SELECT p.id, c.nome, c.email, c.data_registro, 
+                   p.nome_espaco, p.localizacao, p.cep, p.descricao, p.recursos
+            FROM proprietario p
+            JOIN cliente c ON p.id = c.id
+            WHERE p.id = :id
+        ");
+        $stmt->bindParam(':id', $ownerId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $ownerData = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($ownerData) {
+            return new self(
+                $ownerData['id'], // Certifique-se de que o 'id' agora será retornado corretamente
+                $ownerData['nome'],
+                $ownerData['email'],
+                'Dono',
+                $ownerData['data_registro'],
+                $ownerData['nome_espaco'],
+                $ownerData['localizacao'],
+                $ownerData['cep'],
+                $ownerData['descricao'],
+                $ownerData['recursos']
+            );
+        }
         return null;
     }
-}
+    public static function registerQuadra($ownerId, $nomeQuadra, $esporte, $coberta, $tipoAluguel, $valor) {
+        $pdo = Conexao::getInstance();
 
-    public function inserirEtapa1($descricao, $id_user, $nome_dono)
-    {
-        $sql = "INSERT INTO quadra (descricao, id_user, nome_dono) VALUES (:descricao, :id_user, :nome_dono)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-        $stmt->bindParam(':nome_dono', $nome_dono, PDO::PARAM_STR);
-        
-        return $stmt->execute();
-    }
+        try {
+            $stmt = $pdo->prepare("
+                INSERT INTO quadra (proprietario_id, nome, esporte, coberta, tipo_aluguel, valor, imagem_quadra)
+                VALUES (:proprietario_id, :nome, :esporte, :coberta, :tipo_aluguel, :valor, 'default.jpg')
+            ");
 
-    public function atualizarQuadra($titulo, $esporte, $localizacao, $descricao, $valor, $id_user, $nome_dono)
-    {
-        // Verifica se já existe um registro para o usuário atual
-        $sql_check = "SELECT id, descricao FROM quadra WHERE id_user = :id_user AND nome_dono = :nome_dono";
-        $stmt_check = $this->conn->prepare($sql_check);
-        $stmt_check->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-        $stmt_check->bindParam(':nome_dono', $nome_dono, PDO::PARAM_STR);
-        $stmt_check->execute();
-        $quadra = $stmt_check->fetch(PDO::FETCH_ASSOC);
+            $stmt->bindParam(':proprietario_id', $ownerId, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nomeQuadra, PDO::PARAM_STR);
+            $stmt->bindParam(':esporte', $esporte, PDO::PARAM_STR);
+            $stmt->bindParam(':coberta', $coberta, PDO::PARAM_BOOL);
+            $stmt->bindParam(':tipo_aluguel', $tipoAluguel, PDO::PARAM_STR);
+            $stmt->bindParam(':valor', $valor, PDO::PARAM_STR);
 
-        if ($quadra) {
-            // Se já existe uma quadra para este usuário, atualiza o registro
-            if (empty($descricao)) {
-                $descricao = $quadra['descricao'];
-            }
-
-            $sql_update = "UPDATE quadra 
-                           SET nome_quadra = :titulo, esporte = :esporte, localizacao = :localizacao, descricao = :descricao, valor = :valor 
-                           WHERE id_user = :id_user AND nome_dono = :nome_dono";
-            $stmt_update = $this->conn->prepare($sql_update);
-            $stmt_update->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-            $stmt_update->bindParam(':esporte', $esporte, PDO::PARAM_STR);
-            $stmt_update->bindParam(':localizacao', $localizacao, PDO::PARAM_STR);
-            $stmt_update->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-            $stmt_update->bindParam(':valor', $valor, PDO::PARAM_STR);
-            $stmt_update->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-            $stmt_update->bindParam(':nome_dono', $nome_dono, PDO::PARAM_STR);
-            return $stmt_update->execute();
-        } else {
-            // Se não existe, insere um novo registro
-            $sql_insert = "INSERT INTO quadra (nome_quadra, esporte, localizacao, descricao, valor, id_user, nome_dono) 
-                           VALUES (:titulo, :esporte, :localizacao, :descricao, :valor, :id_user, :nome_dono)";
-            $stmt_insert = $this->conn->prepare($sql_insert);
-            $stmt_insert->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-            $stmt_insert->bindParam(':esporte', $esporte, PDO::PARAM_STR);
-            $stmt_insert->bindParam(':localizacao', $localizacao, PDO::PARAM_STR);
-            $stmt_insert->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-            $stmt_insert->bindParam(':valor', $valor, PDO::PARAM_STR);
-            $stmt_insert->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-            $stmt_insert->bindParam(':nome_dono', $nome_dono, PDO::PARAM_STR);
-            return $stmt_insert->execute();
-        }
-    }
-
-    public function uploadFotoQuadra()
-    {
-        // Configurações de upload
-        $_UP['pasta'] = '../upload/quadra_img/';
-        $_UP['tamanho'] = 1024 * 1024 * 100; // 100MB
-        $_UP['extensoes'] = array('png', 'jpg', 'jpeg', 'gif');
-
-        // Verifica se houve algum erro no upload
-        if ($_FILES['arquivo']['error'] != 0) {
-            die("Não foi possível fazer o upload, erro: " . $_FILES['arquivo']['error']);
-        }
-
-        // Verifica o tamanho do arquivo
-        if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
-            echo "
-                <script type=\"text/javascript\">
-                    alert(\"Arquivo muito grande.\");
-                    window.location.href = '../views/owner/form.quadra2.php';
-                </script>
-            ";
-            return;
-        }
-
-        // Verifica a extensão do arquivo
-        $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
-        if (!in_array($extensao, $_UP['extensoes'])) {
-            echo "
-                <script type=\"text/javascript\">
-                    alert(\"Extensão não permitida.\");
-                    window.location.href = '../views/owner/form.quadra2.php';
-                </script>
-            ";
-            return;
-        }
-
-        // Define o nome do arquivo
-        $nome_final = $_FILES['arquivo']['name'];
-
-        // Tenta mover o arquivo para a pasta de upload
-        if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $nome_final)) {
-            $stmt_delete = $this->conn->prepare("DELETE FROM imagem_quadra WHERE id_dono = :id_user");
-            $stmt_delete->bindParam(':id_user', $_SESSION['client']['id'], PDO::PARAM_INT);
-            $stmt_delete->execute();
-
-            $stmt = $this->conn->prepare("INSERT INTO imagem_quadra (nome_imagem, id_dono) VALUES (:nome_imagem, :id_user)");
-            $stmt->bindParam(':nome_imagem', $nome_final);
-            $stmt->bindParam(':id_user', $_SESSION['client']['id'], PDO::PARAM_INT);
             $stmt->execute();
 
-            // Redireciona para a próxima etapa após o upload bem-sucedido
-            echo "
-                <script type=\"text/javascript\">
-                    alert(\"Imagem cadastrada com sucesso!\");
-                    window.location.href = '../views/owner/form.quadra3.php';
-                </script>
-            ";
-            exit();
-        } else {
-            echo "
-                <script type=\"text/javascript\">
-                    alert(\"Não foi possível cadastrar a imagem.\");
-                    window.location.href = '../views/owner/form.quadra2.php';
-                </script>
-            ";
+            return $pdo->lastInsertId();
+        } catch (PDOException $e) {
+            error_log("Erro ao registrar quadra: " . $e->getMessage());
+            return false;
         }
     }
     
+    
+    public function getQuadras() {
+        $pdo = Conexao::getInstance();
+        $stmt = $pdo->prepare("
+            SELECT id, nome, esporte, coberta, tipo_aluguel, valor, imagem_quadra
+            FROM quadra
+            WHERE proprietario_id = :proprietario_id
+        ");
+        
+        $id = $this->getId(); // Armazena o ID em uma variável
+        $stmt->bindParam(':proprietario_id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function uploadFotoPerfilOwner($quadraId, $origem = null)
+{
+    // Configurações de upload
+    $_UP['pasta'] = '../upload/quadra_img/';
+    $_UP['tamanho'] = 1024 * 1024 * 100; // 100MB
+    $_UP['extensoes'] = array('png', 'jpg', 'jpeg', 'gif');
+
+    if ($_FILES['arquivo']['error'] != 0) {
+        die("Não foi possível fazer o upload, erro: " . $_FILES['arquivo']['error']);
+    }
+
+    if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
+        $this->exibirAlerta("Arquivo muito grande.", $origem);
+        return;
+    }
+
+    $extensao = strtolower(pathinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION));
+    if (!in_array($extensao, $_UP['extensoes'])) {
+        $this->exibirAlerta("Extensão não permitida.", $origem);
+        return;
+    }
+
+    $nome_final = uniqid() . '.' . $extensao;
+
+    if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $nome_final)) {
+        $pdo = Conexao::getInstance();
+
+        // Atualiza a coluna imagem_quadra na tabela quadra usando o ID da quadra
+        $stmt = $pdo->prepare("UPDATE quadra SET imagem_quadra = :imagem_quadra WHERE id = :quadra_id");
+        $imagem_quadra = $_UP['pasta'] . $nome_final;
+        $stmt->bindParam(':imagem_quadra', $imagem_quadra);
+        $stmt->bindParam(':quadra_id', $quadraId, PDO::PARAM_INT);
+        $stmt->execute();
+    } else {
+        $this->exibirAlerta("Não foi possível atualizar a imagem de perfil.", $origem);
+    }
+}   
+public function salvarHorarios($quadraId, $horarios) {
+    $db = Conexao::getInstance();
+    
+    // Preparar a declaração SQL para inserir horários
+    $stmt = $db->prepare("INSERT INTO horarios_disponiveis (quadra_id, data, dia_da_semana, horario_inicio, horario_fim, status) VALUES (?, ?, ?, ?, ?, 'disponível')");
+    
+    // Obter a data atual
+    $dataAtual = new DateTime();
+    
+    // Array para mapear números do dia da semana para nomes em português
+    $diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    
+    foreach ($horarios as $dia => $dados) {
+        // Validar os horários
+        if (!$this->validarHorarios($dados['inicio'], $dados['fim'], $dados['intervalo_inicio'], $dados['intervalo_fim'])) {
+            throw new Exception("Horários inválidos para o dia: " . ucfirst($dia));
+        }
+        
+        // Converter o dia da semana para um número (0 = Domingo, 1 = Segunda, etc.)
+        $diaNumerico = array_search($dia, ['domingo', 'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado']);
+        
+        // Encontrar a próxima data para este dia da semana
+        $data = clone $dataAtual;
+        while ($data->format('w') != $diaNumerico) {
+            $data->modify('+1 day');
+        }
+        
+        // Obter o nome do dia da semana em português
+        $diaDaSemana = $diasSemana[$diaNumerico];
+        
+        // Criar objetos DateTime para o início e fim do período
+        $horaInicio = DateTime::createFromFormat('H:i', $dados['inicio']);
+        $horaFim = DateTime::createFromFormat('H:i', $dados['fim']);
+        
+        // Calcular e inserir os intervalos de 1 hora
+        $intervaloAtual = clone $horaInicio;
+        while ($intervaloAtual < $horaFim) {
+            $proximoIntervalo = clone $intervaloAtual;
+            $proximoIntervalo->modify('+1 hour');
+            
+            // Se o próximo intervalo ultrapassar o horário de fim, ajustar para o horário de fim
+            if ($proximoIntervalo > $horaFim) {
+                $proximoIntervalo = clone $horaFim;
+            }
+            
+            // Inserir o intervalo de 1 hora
+            $stmt->execute([
+                $quadraId,
+                $data->format('Y-m-d'),
+                $diaDaSemana,
+                $intervaloAtual->format('H:i'),
+                $proximoIntervalo->format('H:i')
+            ]);
+            
+            // Mover para o próximo intervalo
+            $intervaloAtual = $proximoIntervalo;
+        }
+        
+        // Tratar o intervalo de indisponibilidade, se existir
+        if ($dados['intervalo_inicio'] !== '' && $dados['intervalo_fim'] !== '') {
+            $horaIntervaloInicio = DateTime::createFromFormat('H:i', $dados['intervalo_inicio']);
+            $horaIntervaloFim = DateTime::createFromFormat('H:i', $dados['intervalo_fim']);
+            
+            $stmtIntervalo = $db->prepare("UPDATE horarios_disponiveis SET status = 'indisponível' WHERE quadra_id = ? AND data = ? AND horario_inicio >= ? AND horario_fim <= ?");
+            $stmtIntervalo->execute([
+                $quadraId,
+                $data->format('Y-m-d'),
+                $horaIntervaloInicio->format('H:i'),
+                $horaIntervaloFim->format('H:i')
+            ]);
+        }
+    }
+    
+    return true;
 }
-?>
+
+private function validarHorarios($inicio, $fim, $intervaloInicio, $intervaloFim) {
+    $horaInicio = DateTime::createFromFormat('H:i', $inicio);
+    $horaFim = DateTime::createFromFormat('H:i', $fim);
+    
+    if ($horaFim <= $horaInicio) {
+        return false;
+    }
+    
+    if ($intervaloInicio !== '' && $intervaloFim !== '') {
+        $horaIntervaloInicio = DateTime::createFromFormat('H:i', $intervaloInicio);
+        $horaIntervaloFim = DateTime::createFromFormat('H:i', $intervaloFim);
+        
+        if ($horaIntervaloFim <= $horaIntervaloInicio ||
+            $horaIntervaloInicio < $horaInicio ||
+            $horaIntervaloFim > $horaFim) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+}

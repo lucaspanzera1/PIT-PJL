@@ -7,7 +7,7 @@ body{
 body.dark-mode {
     background-color: #262626;
     color: #ffffff;
-    background-image: url(../../resources/images/funadark.conta.png);
+    background-image: url(../../resources/images/fundo.conta.dark.png);
 }
 header{
     background-color: #FFFFFF;
