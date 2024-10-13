@@ -1,12 +1,12 @@
 body{
     font-family: "Inter", sans-serif;
-    background-image: url(../../resources/images/fundo.perfil.png);
-    background-position: bottom;
+    background-image: url(../../resources/images/background.user.png);
     background-attachment: fixed;
+    background-position: 100%;
     transition: background-image 0.3s ease, color 0.3s ease;
 }
 body.dark-mode {
-    background-image: url(../../resources/images/fundo.perfil.dark.png);
+    background-attachment: fixed;
     background-color: #262626;
     color: white;
 }
@@ -14,7 +14,7 @@ body.dark-mode {
     height: 80vh;
 }
 #Quad {
-    margin-top: 150px;
+    margin-top: 8%;
     background-color: white;
     border: 1px solid #22222260;
     width: 600px;
@@ -32,7 +32,7 @@ body.dark-mode #Quad {
     color: white;
 }
 #Quad:hover{
-    transform: scale(1.1);
+    transform: scale(1.03);
     cursor: pointer;
 }
 #Perfil img{
@@ -64,6 +64,7 @@ body.dark-mode #Quad {
 }
 @media (max-width:600px) {
     #Quad {
+        margin-top: 20%;
         width: 300px;
         height: 300px;
     }

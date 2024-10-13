@@ -1,29 +1,22 @@
 body{
     font-family: "Inter", sans-serif;
     transition: background-image 0.3s ease, color 0.3s ease;
-    background-image: url(../../resources/images/fundo.gerenciador.png);
     background-attachment: fixed;
 }
 body.dark-mode {
     background-color: #262626;
     color: #ffffff;
-    background-image: url(../../resources/images/fundo.gerenciador.dark.png);
 }
 header{
     background-color: #FFFFFF;
 }
 #Info h1{
     font-size: 62px;
-    color: #0000FF;
-    transition: color 0.3s ease;
 }
 #Info h2{
     font-size: 40px;
     font-weight: 400;
     margin-top: -2%;
-}
-body.dark-mode #Info h1{
-    color: #9c079c;
 }
 #SecInfo{
     padding-top: 150px;
@@ -34,11 +27,10 @@ body.dark-mode #Info h1{
     align-items: center; 
     gap: 5px;
 }
-body.dark-mode #recursos svg path{
-    fill: white;
-    stroke: white;
-  }
-
+svg path{
+    fill: #FFA500;
+    stroke: #FFA500;
+}
 a{
     text-decoration: none;
     color: black;
@@ -46,6 +38,8 @@ a{
 #quadras{
     display: grid;
     grid-template-columns: auto auto auto;
+    justify-content: left;
+    gap: 20px;
 }
 .quadra {
     border: 1px solid #ddd;
@@ -97,4 +91,10 @@ a{
 }
 body.dark-mode a{
     color: white;
+}
+@media (max-height: 800px){
+    body{
+background-position:  40% 23%;
+    }
+
 }

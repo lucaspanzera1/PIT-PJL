@@ -1,13 +1,11 @@
 body{
     font-family: "Inter", sans-serif;
     transition: background-image 0.3s ease, color 0.3s ease;
-    background-image: url(../../resources/images/fundo.editarperfil.png);
     background-attachment: fixed;
 }
 body.dark-mode {
     background-color: #262626;
     color: #ffffff;
-    background-image: url(../../resources/images/fundo.editarperfil.dark.png);
 }
 header{
     background-color: white;
@@ -24,9 +22,11 @@ body.dark-mode #QuadCinza2{
     background-color: white;
 }
 section{
-    padding-top: 250px;
-    padding-bottom: 100px;
-    margin-left: 230px;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 0.7;
 }
 section h1{
     font-size: 45px;
@@ -34,7 +34,6 @@ section h1{
 section h2{
     font-size: 32px;
     font-weight: 300;
-    margin-top: -30px;
 }
 .form-container{
     margin-top: 100px;
@@ -55,21 +54,30 @@ input{
         background-color: transparent;
         transition: 0.3s ease, color 0.3s ease;
  }
- .form-group button{
-    font-size: 24px;
-    font-weight: 100;
-    width: 220px;
-    height: 50px;
-    border: solid 1px black;
-    border-radius: 10px;
-    transition: 0.6s;
-    margin-top: 2%;
+.form-group button{
+  margin-top: 10px;
+  width: 380px;
+  height: 75px;
+  border-radius: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  color: white;
+  transition: 0.6s;
+  border-style: none;
+  border: 1px solid #FEA500;
+  background-color: transparent;
+  color: #FEA500;
 }
 .form-group button:hover{
-    background-color: black;
-color: white;
-cursor: pointer;
-}    
+  background-color: #FEA500;
+  color: white;
+  font-weight: 600;
+}
+
+
+
 body.dark-mode input{
     color: white;
 }
@@ -120,25 +128,94 @@ body.dark-mode input{
     width: 650px;
     height: 650px;
   }
-  #ImgPerfil1 input[type=submit]{
-    position: relative;
-    font-size: 24px;
-        font-weight: 100;
-        width: 220px;
-        height: 50px;
-        border: solid 1px black;
-        border-radius: 10px;
-        transition: 0.6s;
-        margin-left: 30%;
-        cursor: pointer;
-        margin-top: 3%;
+
+#ImgPerfil1 input[type=submit]{
+  margin-top: 10px;
+  width: 380px;
+  height: 75px;
+  border-radius: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  color: white;
+  transition: 0.6s;
+  border-style: none;
+  border: 1px solid #FEA500;
+  background-color: transparent;
+  color: #FEA500;
 }
 #ImgPerfil1 input[type=submit]:hover{
-    background-color: black;
-    color: white;
+  background-color: #FEA500;
+  color: white;
+  font-weight: 600;
 }
+
 #ImgPerfil1 input::placeholder{
     color: black;
 }
+  #foto{
+    margin-top: 10px;
+    width: 380px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    color: white;
+    transition: 0.6s;
+    border-style: none;
+    border: 1px solid #FEA500;
+    background-color: transparent;
+    color: #FEA500;
+  }
+  #foto:hover{
+    background-color: #FEA500;
+    color: white;
+    font-weight: 600;
+  }
+  body.dark-mode section form button{
+    background-color: #262626;
+    color: white;
+    border-style: none;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.25);
+  }
 
-
+  .form-container button{
+    margin-top: 10px;
+    width: 380px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    color: white;
+    transition: 0.6s;
+    border-style: none;
+    border: 1px solid #FEA500;
+    background-color: transparent;
+    color: #FEA500;
+  }
+  .form-container button:hover{
+    background-color: #FEA500;
+    color: white;
+    font-weight: 600;
+  }
+  @media (max-height: 800px){
+    #ImgPerfil1 .picture {
+      width: 500px;
+      height: 500px;
+    }
+    #ImgPerfil1 .picture:hover {
+      color: white;
+      background-color: black;
+      width: 520px;
+      height: 520px;
+    }
+    .picture img{
+      width: 550px;
+      height: 550px;
+    }
+  }

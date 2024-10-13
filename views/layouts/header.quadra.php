@@ -46,13 +46,42 @@ if (isset($_SESSION['client'])) {
     //echo "Bem-vindo!";
 }
 ?>
-<link rel="stylesheet" href="../../resources/css/header.css?v=<?= time() ?>">
+
+<?php
+include_once '../../config/conexao.php';  
+// Resto do seu código existente para buscar quadra e horários
+if (isset($_GET['id'])) {
+    $quadra_id = $_GET['id'];
+
+        $query = "SELECT * FROM quadra WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $quadra_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $quadra = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($quadra) {
+            // Buscar horários disponíveis para hoje
+            $dataHoje = date('Y-m-d');
+            $horarios = Owner::getHorariosDisponiveis($quadra_id, $dataHoje);
+        } else {
+            echo "<p>Quadra não encontrada.</p>";
+        }
+    } else {
+        echo "<p>ID da quadra não fornecido.</p>";
+    }
+    ?>
+<link rel="stylesheet" href="../../resources/css/header.quadra.css?v=<?= time() ?>">
 
 <header>
     <div>
         <a href="../home/index.php"><h2 id="imgH2"></h2></a>
-        <h1></h1>
     </div>
+
+    <nav class="center-nav">
+        <?php echo "<a href='editar_quadra.php?id=" . $quadra['id'] . "' class='quadra-link'>Espaço</a>"; ?>
+        <?php echo "<a href='hoje.php?id=" . $quadra['id'] . "' class='quadra-link'>Hoje</a>"; ?>
+        <a href="">Calendário</a>
+    </nav>
 
     <?php if (isset($_SESSION['client'])): ?>
         <div class="dropdown">
@@ -88,22 +117,4 @@ if (isset($_SESSION['client'])) {
     </div>
     <?php endif; ?>
 </header>
-<script src="../../resources/js/dark.js"></script>
-<script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainMenuBtn = document.querySelector('.mainmenubtn');
-            const dropdownChild = document.querySelector('.dropdown-child');
-
-            mainMenuBtn.addEventListener('click', function() {
-                dropdownChild.classList.toggle('active');
-            });
-
-            // Fechar o dropdown quando clicar fora dele
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.dropdown')) {
-                    dropdownChild.classList.remove('active');
-                }
-            });
-        });
-    </script>
 

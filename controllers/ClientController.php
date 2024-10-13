@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($action === 'FotoPerfil' && $client) {
         $origem = isset($_POST['origem']) ? $_POST['origem'] : null;
         $client->uploadFotoPerfil($origem);
+        exit();
     }
     
     if ($action === 'update' && $client) {
         $name = $_POST['nome'];
         $email = $_POST['email'];
         $client->updateClient($name, $email);
-        header("Location: ../index.php?cod=1");
         exit();
     }
     
@@ -57,6 +57,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($action === 'registerOwnerResources' && $client) {
         $recursos = isset($_POST['recursos']) ? $_POST['recursos'] : [];
         $client->registerOwnerResources($recursos);
+    }
+    if ($action === 'reservarQuadra') {
+        if (!$client) {
+            echo "<script type='text/javascript'>
+                alert('Você precisa estar logado para fazer uma reserva.');
+                window.location.href='../views/auth/login.php';
+            </script>";
+            exit();
+        }
+
+        $quadraId = $_POST['id_quadra'];
+        $dataReserva = $_POST['data_reserva'];
+        $horarioInicio = $_POST['horario_inicio'];
+        $horarioFim = $_POST['horario_fim'];
+
+        $mensagem = $client->reserveCourt($quadraId, $dataReserva, $horarioInicio, $horarioFim);
+
+        $_SESSION['mensagem'] = $mensagem;
+    
+        
+        header("Location: ../views/home/quadra_detalhes.php?id=" . $quadraId);
+        exit();
     }
 } else {
     // Handle GET requests or invalid actions

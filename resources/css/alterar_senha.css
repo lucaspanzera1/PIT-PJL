@@ -1,14 +1,12 @@
 body{
     font-family: "Inter", sans-serif;
     transition: background-image 0.3s ease, color 0.3s ease;
-    background-image: url(../../resources/images/fundo.senha.png);
     background-attachment: fixed;
     background-position: 50%;
   }
   body.dark-mode {
     background-color: #262626;
     color: #ffffff;
-    background-image: url(../../resources/images/fundo.senha.dark.png);
   }
 #QuadCinza2{
     width: 95%;
@@ -24,7 +22,8 @@ body.dark-mode #QuadCinza2{
 section{
     padding-top: 150px;
     padding-bottom: 100px;
-    margin-left: 230px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 section h1{
     font-size: 45px;
@@ -45,31 +44,6 @@ input[type=password]{
 body.dark-mode input[type=password]{
     border:  1px solid white;
 }
-input[type=submit]{
-    font-size: 24px;
-    font-weight: 100;
-    width: 220px;
-    height: 50px;
-    border: solid 1px black;
-    border-radius: 10px;
-    transition: 0.6s;
-    margin-top: 2%;
-}
-input[type=submit]{
-    font-size: 24px;
-    font-weight: 100;
-    width: 220px;
-    height: 50px;
-    border: solid 1px black;
-    border-radius: 10px;
-    transition: 0.6s;
-    margin-top: 2%;
-}
-input[type=submit]:hover{
-    background-color: black;
-    color: white;
-    cursor: pointer;
-}    
 div div{
     font-size: 28px;
     font-weight: 200;
@@ -78,3 +52,24 @@ div div{
 #SenhaS{
     margin-left: 230px;
 }
+#Continuar{
+    margin-top: 10px;
+    width: 380px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    color: white;
+    transition: 0.6s;
+    border-style: none;
+    border: 1px solid #FEA500;
+    background-color: transparent;
+    color: #FEA500;
+  }
+  #Continuar:hover{
+    background-color: #FEA500;
+    color: white;
+    font-weight: 600;
+  }
