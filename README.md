@@ -2,7 +2,7 @@
 ![License](https://img.shields.io/badge/lucaspanzera-arenarental-orange)  ![License](https://img.shields.io/badge/license-MIT-orange) </br>
 Uma plataforma completa para aluguel de quadras esportivas, conectando atletas a espaços esportivos de maneira simples e eficiente.
 
-![ArenaRental](content/banner.jpg)
+![PIT-PJL](content/header.gif.gif)
 
 **Nossa plataforma é uma solução inovadora para o aluguel de quadras esportivas e a gestão desses estabelecimentos.**
 
@@ -89,36 +89,37 @@ $ http://localhost/arenarental
 ### 🗺️ Configurando a API do Google Maps
 ```bash
 
-Para utilizar as funcionalidades de mapas, você precisará de uma chave API do Google Maps. Siga os passos:
+Para utilizar as funcionalidades de mapas, você precisará de uma chave API do Google Maps.
+Siga os passos:
 
-1. **Acesse o Google Cloud Console**
-   * Vá para [Google Cloud Console](https://console.cloud.google.com/)
-   * Crie uma conta ou faça login se já tiver
+1. Acesse o Google Cloud Console
+  Vá para [Google Cloud Console](https://console.cloud.google.com/)
+  Crie uma conta ou faça login se já tiver
 
-2. **Crie um Projeto**
-   * Clique em "Criar Projeto"
-   * Dê um nome ao projeto (ex: "ArenaRental")
-   * Clique em "Criar"
+2. Crie um Projeto
+    Clique em "Criar Projeto"
+    Dê um nome ao projeto (ex: "ArenaRental")
+    Clique em "Criar"
 
-3. **Ative as APIs Necessárias**
-   * No menu lateral, vá em "APIs e Serviços" > "Biblioteca"
-   * Procure e ative a seguinte API:
-     * Maps JavaScript API
+3. Ative as APIs Necessárias
+    No menu lateral, vá em "APIs e Serviços" > "Biblioteca"
+    Procure e ative a seguinte API:
+      Maps JavaScript API
 
-4. **Obtenha sua Chave de API**
-   * No menu lateral, vá em "APIs e Serviços" > "Credenciais"
-   * Clique em "Criar Credenciais" > "Chave de API"
-   * Sua chave será gerada (formato: AIzaSyB...)
+4. Obtenha sua Chave de API
+    No menu lateral, vá em "APIs e Serviços" > "Credenciais"
+    Clique em "Criar Credenciais" > "Chave de API"
+    Sua chave será gerada (formato: AIzaSyB...)
 
-5. **Restrinja sua Chave de API (Recomendado)**
-   * Nas configurações da chave, adicione restrições:
-     * Restrição de HTTP: Adicione seu domínio
-     * Restrição de APIs: Selecione apenas as APIs que você ativou
+5. Restrinja sua Chave de API (Recomendado)
+    Nas configurações da chave, adicione restrições:
+      Restrição de HTTP: Adicione seu domínio
+      Restrição de APIs: Selecione apenas as APIs que você ativou
 
-6. **Configure no Projeto**
-   * Abra o arquivo `ArenaRental/views/home/quadra_detalhes.php`
-   * Procure a variável de configuração da API
-   * Adicione sua chave:
+6. Configure no Projeto
+    Abra o arquivo `ArenaRental/views/home/quadra_detalhes.php`
+    Procure a variável de configuração da API
+    Adicione sua chave:
 <script src="https://maps.googleapis.com/maps/api/js?SUA-CHAVE-AQUI&callback=initMap" async defer></script>
 ```
 
@@ -241,7 +242,4 @@ arenarental/
 Desenvolvedor em início de carreira, movido pela paixão por tecnologia e pela busca constante de conhecimento. Comprometido em transformar ideias em código e criar soluções que façam a diferença.
 - [LinkedIn](https://www.linkedin.com/in/lucas-panzera/)
 - [GitHub](https://github.com/lucaspanzera1)
-- [Email](mailto:lucassouzapanzera@gmail.com)
-
-
-
+- Contato: lucassouzapanzera@gmail.com
