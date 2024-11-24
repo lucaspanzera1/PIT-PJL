@@ -1,0 +1,125 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+}
+body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+}
+header{
+    background-color: #FFFFFF;
+}
+#SecInfo{
+    display: grid;
+    grid-template-columns: 40% 50%;
+}
+#Info{
+    line-height: 1;
+}
+#Info h1{
+    font-size: 62px;
+}
+#Info h2{
+    font-size: 40px;
+    font-weight: 400;
+}
+#SecInfo{
+    padding-top: 150px;
+    margin-left: 10%;
+}
+#recursos{
+     display: flex;
+    align-items: center; 
+    gap: 5px;
+}
+svg path{
+    fill: #FFA500;
+    stroke: #FFA500;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#quadras{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: left;
+    gap: 20px;
+}
+.quadra {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.quadra img {
+    max-width: 100%;
+    height: auto;
+}
+#quadra-item{
+    width: 500px;
+    height: 380px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: white;
+    transition: 0.6s;
+    line-height: 0.6;
+}
+body.dark-mode #quadra-item{
+    border: 1px solid white;
+    background-color: #262626;
+}
+#quadra-item img{
+    width: 500px;
+    height: 190px;
+    border-radius: 15px 15px 0px 0px;
+}
+#quadra-item h1{
+    font-size: 34px;
+    font-weight: 600;
+    margin-left: 5%;
+}
+#quadra-item h2{
+    font-size: 30px;
+    font-weight: 300;
+    margin-left: 5%;
+}
+p{
+    color: black;
+}
+body.dark-mode p{
+    color: white;
+}
+a{
+    color: black;
+}
+body.dark-mode a{
+    color: white;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.quadra-link{
+text-decoration: none;
+}
+@media (max-height: 800px){
+    body{
+background-position:  40% 23%;
+    }
+
+}
+#td-css{
+    display: grid;
+    grid-template-columns: auto auto;
+  }

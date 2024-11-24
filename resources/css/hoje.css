@@ -1,0 +1,259 @@
+#Info{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 150px;
+    line-height: 1.0;
+}
+#Info h1{
+    font-size: 62px;
+}
+#Info h2{
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -2%;
+}
+#Info h3{
+    font-size: 32px;
+    font-weight: 200;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+form {
+    display: inline-block;
+}
+
+.btn-reservar {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-reservar:hover {
+    background-color: #45a049;
+}
+
+tr.pendente {
+    background-color: #ffdab9;
+}
+
+tr.reservado {
+    background-color: #dff0d8;
+}
+.button-group {
+    display: flex;
+    gap: 8px;
+}
+
+.eye-icon {
+    cursor: pointer;
+    padding: 5px;
+    user-select: none;
+}
+
+.value-hidden {
+    filter: blur(6px);
+}
+
+th .eye-icon {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.eye-icon {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-icon svg {
+    width: 100%;
+    height: 100%;
+    color: currentColor; /* Usa a cor do texto atual */
+}
+
+.value-hidden {
+    /* Mantenha seus estilos para valores ocultos aqui */
+    filter: blur(4px);
+    /* ou */
+    /* content: '****'; */
+}
+
+
+.eye-icon:hover {
+    color: #007bff;
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+}
+
+.modal-reserva {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    width: 90%;
+    max-width: 500px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal-reserva.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #718096;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background-color: #f7fafc;
+    color: #2d3748;
+    transform: rotate(90deg);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: #f8fafc;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+    background-color: #fff;
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    color: #a0aec0;
+    pointer-events: none;
+}
+
+.modal-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+
+.btn-primary {
+    background-color: #4299e1;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3182ce;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(66, 153, 225, 0.1);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.3s ease-in-out;
+}

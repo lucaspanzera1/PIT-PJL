@@ -1,0 +1,225 @@
+
+body{
+    font-family: "Inter", sans-serif;
+    background-attachment: fixed;
+    background-position: 100%;
+    transition: background-image 0.3s ease, color 0.3s ease;
+}
+body.dark-mode {
+    background-attachment: fixed;
+    background-color: #262626;
+    color: white;
+}
+header{
+    z-index: 4;
+}
+#Info{
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 15vh;
+    line-height: 1.0;
+}
+#Info h1{
+    font-size: 62px;
+}
+#Info h2{
+    font-size: 25px;
+    font-weight: 400;
+}
+#Info h3{
+    font-size: 32px;
+    font-weight: 200;
+}
+body.dark-mode .filtro-label{
+    color: white;
+}
+body.dark-mode .filtro-select{
+    color: white;
+    background-color: #262626;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+#cancelar-btn{
+    text-align: center;
+}
+
+form {
+    display: inline-block;
+}
+.reserva-tabela {
+    display: block; /* Esconde as reservas por padrão */
+}
+/* Estilo do título da data */
+.data-titulo {
+    cursor: pointer; /* Muda o cursor para indicar que pode ser clicado */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem; /* Tamanho da fonte */
+    color: #333; /* Cor da fonte */
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f0f0f0; /* Fundo da área clicável */
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+body.dark-mode .data-titulo{
+    color: white;
+    background-color: #262626;
+    border: 1px solid white;
+}
+
+/* Estilo da seta */
+.data-titulo .seta {
+    font-size: 1.5rem; /* Tamanho da seta */
+    transition: transform 0.3s ease; /* Transição suave ao rotacionar */
+}
+
+/* Muda o fundo ao passar o mouse */
+.data-titulo:hover {
+    background-color: #e0e0e0;
+}
+
+/* Tabelas visíveis por padrão */
+.reserva-tabela {
+    display: block; /* Todas as reservas começam visíveis */
+    margin-bottom: 20px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 1000px; /* Altura máxima quando visível */
+    opacity: 1;
+    overflow: hidden;
+}
+
+/* Quando a tabela está oculta */
+.reserva-tabela:not(.visivel) {
+    max-height: 0; /* Esconde gradualmente */
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    display: none; /* Depois da animação, esconde de fato */
+}
+
+/* A seta começa já rotacionada para baixo */
+.data-titulo .seta {
+    transform: rotate(90deg); /* Rotacionada para baixo */
+    transition: transform 0.3s ease;
+}
+
+/* Quando a tabela está oculta, a seta volta para a direita */
+.data-titulo.closed .seta {
+    transform: rotate(0deg); /* Volta a seta para a direita */
+}
+.swal-wide {
+    width: 850px !important;
+    padding: 20px;
+}
+
+.btn-cancelar {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-cancelar:hover {
+    background-color: #cc0000;
+}
+.filtro-container {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filtro-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    outline: none;
+}
+
+.filtro-select:hover {
+    border-color: #999;
+}
+
+.filtro-select:focus {
+    border-color: #666;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.filtro-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.reserva-container {
+    transition: all 0.3s ease;
+}
+/* Responsividade para telas muito pequenas (smartphones) */
+@media screen and (max-width: 800px) {
+
+    #Info h1{
+        font-size: 50px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    /* Esconde os cabeçalhos da tabela */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+    }
+    
+    td {
+        /* Comporta-se como uma "linha" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    td:before {
+        /* Adiciona o título de cada coluna antes do conteúdo */
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-title);
+        font-weight: bold;
+    }
+    
+    /* Define os títulos para cada coluna */
+    td:nth-of-type(1):before { content: "Quadra:"; }
+    td:nth-of-type(2):before { content: "Horário de Início:"; }
+    td:nth-of-type(3):before { content: "Horário de Fim:"; }
+    td:nth-of-type(4):before { content: "Valor:"; }
+    td:nth-of-type(5):before { content: "Status:"; }
+    td:nth-of-type(6):before { content: "Ações:"; }
+    
+}
+
+

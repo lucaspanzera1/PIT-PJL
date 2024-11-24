@@ -1,0 +1,109 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+}
+body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+}
+header{
+    background-color: #FFFFFF;
+}
+#Info{
+    padding-top: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+h3{
+    text-align: center;
+}
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.total-valor {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.total-label {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.total-amount {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stat-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    border: 1px solid #e9ecef;
+}
+
+.stat-card-title {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.stat-card-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+.dashboard-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #2c3e50;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+    

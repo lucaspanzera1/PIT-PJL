@@ -1,0 +1,236 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+}
+body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+}
+header{
+    background-color: white;
+    z-index: 4;
+}
+#QuadCinza2{
+    width: 95%;
+    height: 3px;
+    background-color: #22222217;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body.dark-mode #QuadCinza2{
+    background-color: white;
+}
+section{
+  padding-top: 15vh;
+  padding-bottom: 15vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  line-height: 0.8;
+}
+section h1{
+  font-size: 45px;
+}
+section h2{
+  font-size: 32px;
+  font-weight: 300;
+  padding-bottom: 5vh;
+}
+nav{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+  gap: 10vw;
+}
+
+.form-container{
+    margin-top: 10vh;
+}
+.form-container h2{
+    font-size: 45px;
+}
+label{
+    font-size: 28px;
+    font-weight: 200;
+}
+input{
+        font-size: 32px;
+        width: 50vh;
+        height: 50px;
+        border: none;
+        background-color: transparent;
+        transition: 0.3s ease, color 0.3s ease;
+ }
+body.dark-mode input{
+    color: white;
+}
+div #ImgPerfil1{
+    border-radius: 100%;
+}
+#flex-pfp{
+  display: flex;
+  flex-direction: column;       
+}
+#picture__input {
+    display: none;
+  }
+ #ImgPerfil1 .picture {
+  margin-top: -20vh;
+    width: 600px;
+    height: 600px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    transition: 0.6s;
+    outline: none;
+    overflow: hidden;
+    border-radius: 100%;
+  }
+  
+  #ImgPerfil1 .picture:hover {
+    color: white;
+    background-color: black;
+    width: 620px;
+    height: 620px;
+  }
+  
+  #ImgPerfil1 .picture:active {
+    color: turquoise;
+    background: #eee;
+  }
+  
+  #ImgPerfil1 .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .picture img{
+    width: 620px;
+    height: 620px;
+  }
+
+#Continuar{
+  margin-top: 5vh;
+  width: 380px;
+  height: 75px;
+  border-radius: 20px;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+  color: white;
+  transition: 0.6s;
+  border-style: none;
+  border: 1px solid #FEA500;
+  background-color: transparent;
+  color: #FEA500;
+}
+#Continuar:hover{
+  background-color: #FEA500;
+  color: white;
+  font-weight: 600;
+}
+@media (max-width: 1400px) {
+  nav{
+    gap: 8vh;
+  }
+}
+@media (max-width: 1300px) {
+  nav{
+    gap: 6vh;
+  }
+  input{
+    font-size: 29px;
+    width: 45vh;
+}
+  #ImgPerfil1 .picture {
+    width: 550px;
+    height: 550px;
+  }
+  #ImgPerfil1 img{
+    width: 570px;
+    height: 570px;
+  }
+  #ImgPerfil1 .picture:hover {
+    color: white;
+    background-color: black;
+    width: 570px;
+    height: 570px;
+  }
+}
+@media (max-width: 1150px) {
+  nav{
+    gap: 5vh;
+  }
+  input{
+    font-size: 28px;
+    width: 100%;
+}
+  #ImgPerfil1 .picture {
+    width: 500px;
+    height: 500px;
+  
+  #ImgPerfil1 img{
+    width: 520px;
+    height: 520px;
+  }
+  #ImgPerfil1 .picture:hover {
+    color: white;
+    background-color: black;
+    width: 520px;
+    height: 520px;
+  }
+}
+}
+@media (max-width: 1000px) {
+  nav{
+    flex-direction: column;  
+    flex-direction: column-reverse; 
+  }
+  #ImgPerfil1 .picture {
+    margin-top: 0;
+    width: 750px;
+    height: 750px;
+  }
+  #ImgPerfil1 img{
+    width: 870px;
+    height: 870px;
+  }
+  #ImgPerfil1 .picture:hover {
+    color: white;
+    background-color: black;
+    width: 870px;
+    height: 870px;
+  }
+  
+}
+
+@media (max-width: 400px) {
+  input{
+    font-size: 25px;
+    width: 100%;
+}
+  #ImgPerfil1 .picture {
+    width: 100%;
+    height: 350px;
+  }
+  #ImgPerfil1 img{
+    width: 370px;
+    height: 370px;
+  }
+  #ImgPerfil1 .picture:hover {
+    color: white;
+    background-color: black;
+    width: 110%;
+    height: 370px;
+  }
+  #Continuar{
+    width: 100%;
+}
+}

@@ -1,0 +1,323 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+}
+body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+}
+header{
+    background-color: #FFFFFF;
+}
+#Info h1{
+    font-size: 45px;
+}
+#Info h2{
+    font-size: 30px;
+}
+#Info{
+    padding-top: 7%;
+    padding-left: 10%;
+    padding-right: 10%;
+    line-height: 0.8;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 70px 10px;
+}
+#ocupacaoChart {
+    width: 100%; /* Define a largura para ocupar todo o container */
+    height: 300px; /* Defina uma altura fixa, se necessário */
+}
+.ocupacao {
+    background: #fafafa;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 1000px;
+    max-width: 1200px;
+    transition: all 0.3s ease;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.ocupacao:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+    background: rgba(71, 71, 71, 0.062);
+}
+#primeira-ocupacao{
+    width: 640px;
+}
+.filter-section {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+.filter-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filters-row {
+    display: none;
+    align-items: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
+
+.filter-item.button {
+    flex: 0 0 auto;
+    min-width: auto;
+}
+
+.form-select, .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.btn-primary {
+    background: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    height: 45px; /* Mesma altura que os inputs */
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background: #357abd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.input-label {
+    color: #5a6268;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filters-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-item {
+        width: 100%;
+    }
+    
+    .filter-item.button {
+        width: 100%;
+    }
+}
+
+#horariosChart {
+    width: 100%; /* Define a largura para ocupar todo o container */
+    height: 300px; /* Defina uma altura fixa, se necessário */
+}
+.filter-group{
+    display: none;
+}
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.total-valor {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.total-label {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.total-amount {
+    font-size: 2em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-cards {
+    display: none;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stat-card {
+    display: none;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+    border: 1px solid #e9ecef;
+}
+
+.stat-card-title {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.stat-card-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+.dashboard-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 600px;
+    margin: 20px auto;
+    
+}
+
+.filter-container {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #2c3e50;
+    background-color: white;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    appearance: none;
+}
+
+.stat-card {
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.chart-container {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.chart-container {
+    padding: 20px;
+    margin: 0 auto;
+    width: 600px;
+    height: 400px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.section-container {
+    width: 100%;
+}
+
+.scroll-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.card-wrapper {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 16px;
+}
+
+.card {
+    min-width: 500px;
+    height: 500px;
+    background-color: #e5e5e5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+}

@@ -1,0 +1,137 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+}
+body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+}
+header{
+    background-color: #FFFFFF;
+}
+#Info{
+    padding-top: 8%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#horariosChart {
+    width: 100%; /* Define a largura para ocupar todo o container */
+    height: 600px; /* Defina uma altura fixa, se necessário */
+}
+.dashboard-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.filter-section {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.filter-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.filters-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
+
+.filter-item.button {
+    flex: 0 0 auto;
+    min-width: auto;
+}
+
+.form-select, .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.btn-primary {
+    display: none;
+    background: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    height: 45px; /* Mesma altura que os inputs */
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background: #357abd;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input-label {
+    color: #5a6268;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .filters-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-item {
+        width: 100%;
+    }
+    
+    .filter-item.button {
+        width: 100%;
+    }
+}
+.mt-6{
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+}
+

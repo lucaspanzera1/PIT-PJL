@@ -1,0 +1,114 @@
+body{
+    font-family: "Inter", sans-serif;
+    transition: background-image 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
+    background-position: 50%;
+  }
+  body.dark-mode {
+    background-color: #262626;
+    color: #ffffff;
+  }
+#QuadCinza2{
+    width: 95%;
+    height: 3px;
+    background-color: #22222217;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body.dark-mode #QuadCinza2{
+    background-color: white;
+}
+section{
+    padding-top: 15vh;
+    margin-left: 10%;
+    margin-right: 10%;
+    line-height: 0.8;
+}
+section h1{
+    font-size: 45px;
+}
+section h2{
+    font-size: 32px;
+    font-weight: 300;
+    padding-bottom: 5vh;
+}
+input[type=password]{
+    font-size: 25px;
+    width: 70vh;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: transparent;
+}
+body.dark-mode input[type=password]{
+    border:  1px solid white;
+}
+div div{
+    font-size: 28px;
+    font-weight: 200;
+    margin-top: 2%;
+}
+#SenhaS{
+    padding-top: 5vh;
+    line-height: 1.2;
+}
+#Continuar{
+    margin-top: 5vh;
+    width: 380px;
+    height: 75px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    color: white;
+    transition: 0.6s;
+    border-style: none;
+    border: 1px solid #FEA500;
+    background-color: transparent;
+    color: #FEA500;
+  }
+  #Continuar:hover{
+    background-color: #FEA500;
+    color: white;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 800px) {
+    input[type=password]{
+        font-size: 25px;
+        width: 100%;
+        height: 50px;
+    }
+    #Continuar{
+        width: 100%;
+    }
+    section h1{
+        font-size: 40px;
+    }
+    section h2{
+        font-size: 28px;
+        font-weight: 300;
+        padding-bottom: 5vh;
+    }
+}
+
+  @media (max-width: 480px) {
+    input[type=password]{
+        font-size: 25px;
+        width: 100%;
+        height: 50px;
+    }
+    #Continuar{
+        width: 100%;
+    }
+    section h1{
+        font-size: 40px;
+    }
+    section h2{
+        font-size: 28px;
+        font-weight: 300;
+        padding-bottom: 5vh;
+    }
+}
