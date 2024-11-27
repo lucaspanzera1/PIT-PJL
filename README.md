@@ -1,8 +1,10 @@
 # ArenaRental 🏀
-![License](https://img.shields.io/badge/lucaspanzera-ArenaRental-orange)  ![License](https://img.shields.io/badge/license-MIT-orange)  ![Badge em Desenvolvimento](https://img.shields.io/badge/Status-Finalizado-orange)</br>
+![License](https://img.shields.io/badge/lucaspanzera-ArenaRental-orange)  ![License](https://img.shields.io/badge/license-MIT-orange) ![Badge em Desenvolvimento](https://img.shields.io/badge/Status-Finalizado-orange) ![Badge API](https://img.shields.io/badge/GoogleMaps-INATIVO-red)</br>
 Uma plataforma completa para aluguel de quadras esportivas, conectando atletas a espaços esportivos de maneira simples e eficiente.
 
 ![ArenaRental](content/header.gif)
+
+👉 [Vídeo MVP do projeto📷](https://www.youtube.com/watch?v=YtKdn4Tpj9U)
 
 **Nossa plataforma é uma solução inovadora para o aluguel de quadras esportivas e a gestão desses estabelecimentos.**
 
